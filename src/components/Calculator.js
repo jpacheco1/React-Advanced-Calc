@@ -25,6 +25,15 @@ class Calculator extends Component {
         this.setState({operator: e.target.value});
     }
 
+    clear = ()=>{        
+        this.setState({
+            results:'',
+            num1:0,
+            num2: 0,
+            operator:''
+        }) 
+    }
+
     calcOperator = () => {
         switch (this.state.operator) {
             case '+':
@@ -34,6 +43,8 @@ class Calculator extends Component {
                     num2: 0,
                     operator:''
                 })   
+            break;
+            default:
             break;
         }
     }
@@ -48,7 +59,7 @@ class Calculator extends Component {
                        {this.state.num2!==0 && this.state.num2}</p>
                     <div className="answer-box">{this.state.results}</div>
                     <div className="calc-row">
-                        <button className="calc-button calc-button-top">AC</button>
+                        <button className="calc-button calc-button-top"  onClick={()=> this.clear()}>AC</button>
                         <button className="calc-button calc-button-top">+/-</button>
                         <button className="calc-button calc-button-top">%</button>
                         <button className="calc-button calc-button-op">/</button>
